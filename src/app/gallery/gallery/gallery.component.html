@@ -1,0 +1,21 @@
+<div>
+    <h2 style="text-align:center">Recent Photos</h2>
+    <div class="container">
+        <div style="margin-top:10px; margin:10px;">
+            <button class="btn btn-lg btn-info" [class.active]="filterBy == 'all'" (click)="filterBy = 'all'">all</button>
+            <button class="btn btn-lg btn-info" [class.active]="filterBy == 'boats'" (click)="filterBy = 'boats'">boats</button>
+            <button class="btn btn-lg btn-info" [class.active]="filterBy == 'camping'" (click)="filterBy = 'camping'">camping</button>
+            <button class="btn btn-lg btn-info" [class.active]="filterBy == 'travelling'" (click)="filterBy = 'travelling'">Travelling</button>
+            <button class="btn btn-lg btn-info" [class.active]="filterBy == 'cooking'" (click)="filterBy = 'cooking'">cooking</button>
+            <button class="btn btn-lg btn-info" [class.active]="filterBy == 'adventure'" (click)="filterBy = 'adventure'">adventure</button>
+        </div>
+        <div class="row">
+            <div class="col pt-3" *ngFor="let image of visibleImage | imageFilter: filterBy">
+                <a [routerLink]="['/image-details', image.id]" routerLinkActive="router-link-active">
+                    <img src="{{image.url}}" alt="image" height="250" width="250">
+                </a>
+
+            </div>
+        </div>
+    </div>
+</div>
